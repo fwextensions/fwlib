@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: DomStorage</title>
+    
+    <script src="http://shjs.sourceforge.net/sh_main.min.js"> </script>
+    <script src="http://shjs.sourceforge.net/lang/sh_javascript.min.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/node-dark.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Class: DomStorage</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+        <span class="ancestors"><a href="module-DomStorage.html">DomStorage</a>~</span>
+    
+    DomStorage
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <h4 class="name" id="DomStorage"><span class="type-signature"></span>new DomStorage</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructor for a <code>DomStorage</code> object that can be saved to a Fireworks
+document's <code>dom.pngText</code> storage area.  Any properties added to the 
+object will be saved when you call its <code>save()</code> method.  To recover the 
+stored data, instantiate a new object with the same name that was 
+originally used to save the preference:</p>
+
+<pre><code>var settings = new DomStorage("MySettings", { foo: 42 });
+alert(settings.foo); // 42
+settings.foo = "bar";
+settings.baz = "hello, world";
+settings.save();
+var newSettings = new DomStorage("MySettings", { foo: 42 });
+alert(newSettings.foo); // "bar"
+alert(newSettings.baz); // "hello, world"
+</code></pre>
+
+<p>The data is saved with the document itself, rather than in an external 
+file, which ensures that it's always available if the user distributes 
+the file to someone else. </p>
+
+<p>The advantage to using the <code>DomStorage</code> class over accessing the 
+<code>dom.pngText</code> property directly is that the latter supports only string
+values.  So if you do:</p>
+
+<pre><code>dom.pngText.foo = [1, 2, 3];
+</code></pre>
+
+<p>and then save the file, the next time you reopen it, the array value 
+will have been turned into the source string version of that value: 
+<code>"[1,2,3]"</code>.  Even more confusing, <code>dom.pngText.foo</code> will appear to still
+be an array after you set it.  It's only after the document is saved,
+closed and reopened do you discover it's been converted into a string.</p>
+
+<p>And to make things worse, each property on <code>dom.pngText</code> is limited to 
+1023 characters.  So if you think you can just stringify some data and 
+store it, think again.  It will get cut off if it's too long.</p>
+
+<p>The <code>DomStorage</code> class works around these limitations by converting the
+data to JSON, chunking up the JSON into strings of 1023 characters, 
+storing each one, and keeping track of how many chunks there are.  If the
+name of your object is <code>"foo"</code>, then the number of string chunks it 
+contains is stored in <code>dom.pngText.foo</code>.  The first chunk is 
+<code>dom.pngText.foo_0</code>, the second is <code>dom.pngText.foo_1</code>, and so on.</p>
+
+<p>When you later instantiate the <code>DomStorage</code> object again, the constructor 
+grabs all of the related strings that are stored in <code>dom.pngText</code>, joins 
+them, and evals that.  The resulting properties are then copied onto the 
+instance.  </p>
+
+<p>One limitation of <code>dom.pngText</code> is that once a property has been added to
+it, there is no way to remove it.  So when you call <code>remove()</code> on an
+instance, the best it can do is go through all of the properties it had
+previously used and set them to <code>""</code>.  The same thing happens when an
+instance is saved and its JSON is shorter than it was previously.  </p>
+
+<p>Note that the properties <code>save</code> and <code>remove</code> are reserved and cannot be
+modified on a <code>DomStorage</code> instance.  Also, the data is stored on the
+<code>dom.pngText</code> of the first page in the document, as each page in a 
+document has its own copy of the property.  If the user deletes the first
+page or rearranges it, the data will be lost.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inName</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>The name of the preference.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inDefaults</code></td>
+            
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>An optional object containing default 
+properties that will be added to the instance.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 98</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A <code>DomStorage</code> instance with all of the properties 
+of the previously stored instance, if any.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Object</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="remove"><span class="type-signature">&lt;inner> </span>remove</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets all of the <code>dom.pngText</code> properties used by the instance to 
+<code>""</code>, since there is no way to completely remove a property from it.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 147</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="save"><span class="type-signature">&lt;inner> </span>save</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Saves all non-method properties of the <code>DomStorage</code> instance as a
+JSON string and stores the strings as one or more properties on the
+<code>dom.pngText</code> object of the document's first page.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 108</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-DomStorage.html">DomStorage</a></li><li><a href="module-files.html">files</a></li><li><a href="module-prefs.html">prefs</a></li></ul><h3>Classes</h3><ul><li><a href="a321565296.html">DomStorage</a></li><li><a href="module-prefs.PrefsStorage.html">PrefsStorage</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Wed Sep 26 2012 18:56:24 GMT-0700 (PDT)
+</footer>
+
+<script> sh_highlightDocument(); </script>
+</body>
+</html>

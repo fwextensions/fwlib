@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: files</title>
+    
+    <script src="http://shjs.sourceforge.net/sh_main.min.js"> </script>
+    <script src="http://shjs.sourceforge.net/lang/sh_javascript.min.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/node-dark.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Module: files</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    files
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+            <div class="description"><p>The <code>fwlib/files</code> module includes utility functions for working with 
+files.  Where the methods accept a path parameter, you can pass in either
+a path string or an array of strings that make up the path.  The array will 
+be combined into a single string with a single / between each part of the
+path.  This means you don't have to worry about whether the substrings
+end or begin with a / when building up a path.  For example:</p>
+
+<pre><code>files.readJSON([fw.appJsCommandsDir, "settings.json"]);
+</code></pre>
+
+<p>This call works even though <code>fw.appJsCommandsDir</code> doesn't end in a /.</p></div>
+        
+        
+        
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 8</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:dojo/json</li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="convertURLToOSPath"><span class="type-signature">&lt;static> </span>convertURLToOSPath</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns a path that's appropriate for the local OS.  Most Fireworks
+path arguments are URLs that begin with <code>file://</code>, which can't be
+used in the OS X or Windows shells.  For instance, 
+<code>"file:///C|/Program%20Files/Adobe"</code> would be returned as
+<code>"C:\Program Files\Adobe"</code>.  Escaped characters in the URL are 
+unescaped in the returned path.  By default, the path is also
+wrapped in quotes, so that spaces in the path don't trip up the 
+command line shell.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inURL</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>The file URL to convert.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inDontQuote</code></td>
+            
+            
+            <td class="type">
+            
+                        Boolean
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>Pass true to prevent the returned
+path from being quoted.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 374</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The OS appropriate version of the file URL.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="copyDirectoryContents"><span class="type-signature">&lt;static> </span>copyDirectoryContents</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Copies all the files from one directory to directory.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFromPath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the source directory.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inToPath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the destination directory. <br />
+If this directory doesn't exist, it will be created.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 186</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="createTempDirectory"><span class="type-signature">&lt;static> </span>createTempDirectory</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the path to a newly created directory in the local system's
+temp folder.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 300</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The path to the new temp directory or null if 
+there was a problem creating the directory.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getCurrentScriptDirectory"><span class="type-signature">&lt;static> </span>getCurrentScriptDirectory</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the path to the directory that contains the script that
+called the function.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFunction</code></td>
+            
+            
+            <td class="type">
+            
+                        Function
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>A function that is guaranteed to throw
+an exception.  The simplest is <code>function(){0()}</code>.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 268</li></ul></dd>
+	
+    
+    
+	
+	
+	<dt class="tag-see">See:</dt>
+	<dd class="tag-see">
+        <ul>
+            <li>getCurrentScriptURL</li>
+        </ul>
+	</dd>
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The path to the directory containing script that 
+defined <code>inFunction</code>.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getCurrentScriptFilename"><span class="type-signature">&lt;static> </span>getCurrentScriptFilename</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the name of the script that called the function.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFunction</code></td>
+            
+            
+            <td class="type">
+            
+                        Function
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>A function that is guaranteed to throw
+an exception.  The simplest is <code>function(){0()}</code>.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 285</li></ul></dd>
+	
+    
+    
+	
+	
+	<dt class="tag-see">See:</dt>
+	<dd class="tag-see">
+        <ul>
+            <li>getCurrentScriptURL</li>
+        </ul>
+	</dd>
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The filename of the script that defined <code>inFunction</code>.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getCurrentScriptURL"><span class="type-signature">&lt;static> </span>getCurrentScriptURL</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the <code>file://</code> URL to the script file that called the 
+function.  In complicated scripts, it's often useful to load other
+scripts that are located in the same directory or nearby directories.
+Normally, you can access the current script's path via
+<code>fw.currentScriptDir</code>, but that value becomes null after one script
+calls another via <code>fw.runScript()</code>.  </p>
+
+<p>The <code>getCurrentScriptURL()</code> function works around this by exploiting 
+the fact that JS exceptions in Fireworks have a <code>fileName</code> property
+that points to the script that was executing when the exception
+occurred.  So you can pass in a function that is guaranteed to throw
+an exception when it is called.  <code>getCurrentScriptURL()</code> will call
+the function, catch the exception, and then return the path to your
+script.  Hackery!</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFunction</code></td>
+            
+            
+            <td class="type">
+            
+                        Function
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>A function that is guaranteed to throw
+an exception.  The simplest is <code>function(){0()}</code>.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 237</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The path to the script that defined <code>inFunction</code>.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="path"><span class="type-signature">&lt;static> </span>path</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns a path that is made up of the arguments to the function.
+There is guaranteed to be only one slash between each argument, so
+so calling <code>files.path("foo/bar", "My Command.jsf")</code> will return
+<code>"foo/bar/My Command.jsf"</code>.  This avoids having to constantly check
+whether a directory path you have stored in a variable has a 
+trailing / or not.</p>
+
+<p>You can also pass in a single array of strings that will be combined
+in the same way.  This is mostly used by the other functions in this
+module, which can take either a string or an array of strings for
+their path arguments.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>arguments</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>Two or more strings to combine into
+a path, or a single array of strings.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 330</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A path created from the combination of the arguments.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="read"><span class="type-signature">&lt;static> </span>read</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the contents of a text file.  If the file does not exist,
+an empty string is returned.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file to read.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 56</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The text contents of the file.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="readJSON"><span class="type-signature">&lt;static> </span>readJSON</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the contents of a JSON file as a JS object.  An object
+passed in via the <code>inDefaultData</code> param will have its properties
+overridden by the data from the JSON file.  If the file does not 
+exist, inDefaultData is returned unmodified.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file to read.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inDefaultData</code></td>
+            
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>An object holding default properties
+that will be overriden by the JSON data.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 125</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The JSON object from the file.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Object</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="write"><span class="type-signature">&lt;static> </span>write</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Writes a string to a text file.  It will overwrite a file that
+already exists at the path.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file to write to.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inText</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The string to write to the file.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 95</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="writeJSON"><span class="type-signature">&lt;static> </span>writeJSON</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Writes a JS object to a JSON text file.  The JSON can be optionally
+pretty-printed.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file to write to.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inData</code></td>
+            
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>The object to convert to JSON.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inSpacer</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last"><p>An optional string that is used to
+indent the JSON output, e.g., "\t" or "  ".</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 168</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-DomStorage.html">DomStorage</a></li><li><a href="module-files.html">files</a></li><li><a href="module-prefs.html">prefs</a></li></ul><h3>Classes</h3><ul><li><a href="a321565296.html">DomStorage</a></li><li><a href="module-prefs.PrefsStorage.html">PrefsStorage</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Wed Sep 26 2012 18:56:24 GMT-0700 (PDT)
+</footer>
+
+<script> sh_highlightDocument(); </script>
+</body>
+</html>
