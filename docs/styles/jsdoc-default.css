@@ -39,6 +39,14 @@ p {
 	margin: .5em 0;
 }
 
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
 .class-description {
     font-style: italic;
 	font-family: Palatino, 'Palatino Linotype', serif;
@@ -56,11 +64,10 @@ p {
 section
 {
 	display: block;
-	
 	background-color: #fff;
 	padding: 12px 24px;
     border-bottom: 1px solid #ccc;
-    margin-right: 240px;
+    margin-right: 150px;
 }
 
 .variation {
@@ -79,9 +86,9 @@ nav
 {
 	display: block;
 	float: left;
-    margin-left: -230px;
+    margin-left: -140px;
     margin-top: 28px;
-    width: 220px;
+    width: 130px;
     border-left: 1px solid #ccc;
     padding-left: 9px;
 }
@@ -228,6 +235,7 @@ section {
 
 .type-signature {
     color: #aaa;
+	padding-left: .25em;
 	float: right;
 }
 
@@ -294,8 +302,12 @@ dd > dl > dd {
 /*	margin-bottom: 4em;*/
 }
 
-.tag-source {
+.tag-source, .tag-todo {
 	color: #888;
+}
+
+.tag-todo {
+	font-weight: bold;
 }
 
 dd.tag-source {
