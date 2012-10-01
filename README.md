@@ -5,7 +5,7 @@ The `fwlib` library offers a collection of utility functions and classes that si
 
 ## fwlib/files
 
-The `fwlib/files` module provides a number of utility functions that simplify working with files in Fireworks extensions.  For instance, `files.read()` reads an entire text file into a string, and `files.writeJSON()` writes a JSON object out to a file.  
+The `fwlib/files` module provides a number of utility functions that simplify working with files in Fireworks extensions.  For instance, `files.read()` reads an entire text file into a string, and `files.writeJSON()` writes a JavaScript object out to a file as a JSON string.  
 
 [Documentation][4]
 
@@ -30,7 +30,7 @@ The `fwlib/prefs` module includes utility functions for working with Fireworks p
 
 The `fwlib/DomStorage` module provides a class that makes it easy to save and restore arbitrary JS data in the `dom.pngText` object in Fireworks documents.  The data is saved with the document itself, rather than in an external file, which ensures that it's always available if the user distributes the file to someone else.  
 
-The advantage to using the `DomStorage` class over accessing the `dom.pngText` property directly is that the latter supports only string values, while the former can safely store arbitrary JS data by splitting up JSON strings. 
+The advantage to using the `DomStorage` class over accessing the `dom.pngText` property directly is that the latter can store only strings of up to 1023 characters, while the former can safely store arbitrary JS data by splitting a JSON string into multiple chunks and then recombining them when the data is later retrieved. 
 
 [Documentation][7]
 
@@ -88,7 +88,7 @@ require([
 });
 ```
 
-The first parameter to `require()` is usually an array of one or more strings that name the modules that this file depends on.  Once those modules have been loaded, the second parameter to `require()` will be called back with references to them.
+The first parameter to `require()` is usually an array of one or more strings that name the modules that the file depends on.  Once those modules have been loaded, the second parameter to `require()` will be called back with references to them.
 
 The module names in the dependencies array are mapped to file paths that are relative to a base directory.  By default, this is the directory from which `fwrequire.js` was loaded, but it can be changed via configuration options.  In the example above, the `"files"` module would be loaded from `lib/fwlib/files.js`.  
 
