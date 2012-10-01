@@ -114,6 +114,161 @@ end or begin with a / when building up a path.  For example:</p>
         <dl>
             
 <dt>
+    <h4 class="name" id="append"><span class="type-signature">&lt;static> </span>append</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Appends a string to the end of a text file.  The only way to do this
+is to read the whole file before writing to it, so this operation
+will become slower the more it's used on a given file.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file to read.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inText</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The string to append to the file.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 123</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>True if the text could be appended, false otherwise.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Boolean</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="convertURLToOSPath"><span class="type-signature">&lt;static> </span>convertURLToOSPath</h4>
     
     
@@ -246,7 +401,7 @@ path from being quoted.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 374</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 412</li></ul></dd>
 	
     
     
@@ -299,7 +454,8 @@ path from being quoted.</p></td>
     
     
     <div class="description">
-        <p>Copies all the files from one directory to directory.</p>
+        <p>Copies all the files from one directory to directory.  The source
+directory will be copied recursively.</p>
     </div>
     
     
@@ -403,7 +559,7 @@ If this directory doesn't exist, it will be created.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 186</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 224</li></ul></dd>
 	
     
     
@@ -465,7 +621,7 @@ temp folder.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 300</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 338</li></ul></dd>
 	
     
     
@@ -597,7 +753,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 268</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 306</li></ul></dd>
 	
     
     
@@ -735,7 +891,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 285</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 323</li></ul></dd>
 	
     
     
@@ -885,7 +1041,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 237</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 275</li></ul></dd>
 	
     
     
@@ -1028,7 +1184,7 @@ a path, or a single array of strings.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 330</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 368</li></ul></dd>
 	
     
     
@@ -1334,7 +1490,7 @@ that will be overriden by the JSON data.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 125</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 162</li></ul></dd>
 	
     
     
@@ -1664,7 +1820,7 @@ indent the JSON output, e.g., "\t" or "  ".</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 168</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 205</li></ul></dd>
 	
     
     
@@ -1706,7 +1862,7 @@ indent the JSON output, e.g., "\t" or "  ".</p></td>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Fri Sep 28 2012 18:47:18 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Oct 01 2012 09:48:54 GMT-0700 (PDT)
 </footer>
 
 <script> sh_highlightDocument(); </script>
