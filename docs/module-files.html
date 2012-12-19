@@ -122,9 +122,7 @@ end or begin with a / when building up a path.  For example:</p>
     
     
     <div class="description">
-        <p>Appends a string to the end of a text file.  The only way to do this
-is to read the whole file before writing to it, so this operation
-will become slower the more it's used on a given file.</p>
+        <p>Appends a string to the end of a text file.</p>
     </div>
     
     
@@ -224,7 +222,7 @@ will become slower the more it's used on a given file.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 112</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 147</li></ul></dd>
 	
     
     
@@ -308,6 +306,8 @@ command line shell.</p>
 		
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -340,6 +340,10 @@ command line shell.</p>
             
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last"><p>The file URL to convert.</p></td>
         </tr>
@@ -369,9 +373,15 @@ command line shell.</p>
             
             
             
+                <td class="default">
+                
+                    false
+                
+                </td>
             
-            <td class="description last"><p>Pass true to prevent the returned
-path from being quoted.</p></td>
+            
+            <td class="description last"><p>Pass true to prevent the 
+returned path from being quoted.</p></td>
         </tr>
 	
 	
@@ -401,7 +411,7 @@ path from being quoted.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 401</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 533</li></ul></dd>
 	
     
     
@@ -559,7 +569,7 @@ If this directory doesn't exist, it will be created.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 213</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 345</li></ul></dd>
 	
     
     
@@ -621,7 +631,7 @@ temp folder.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 327</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 459</li></ul></dd>
 	
     
     
@@ -655,6 +665,140 @@ there was a problem creating the directory.</p>
 	<dd>
 		
 		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getCreatedDate"><span class="type-signature">&lt;static> </span>getCreatedDate</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns a <code>Date</code> object containing the date and time the file was
+created.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 258</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The creation date of the file, or <code>null</code> if the
+file doesn't exist.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Date</span> 
 		
 	</dd>
 </dl>
@@ -753,7 +897,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 295</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 427</li></ul></dd>
 	
     
     
@@ -891,7 +1035,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 312</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 444</li></ul></dd>
 	
     
     
@@ -1041,7 +1185,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 264</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 396</li></ul></dd>
 	
     
     
@@ -1072,6 +1216,328 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 		Type
 	</dt>
 	<dd>
+		
+		<span class="param-type">String</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getModifiedDate"><span class="type-signature">&lt;static> </span>getModifiedDate</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns a <code>Date</code> object containing the date and time the file was
+last modified.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 274</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The last modified date of the file, or <code>null</code> if the
+file doesn't exist.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Date</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getSize"><span class="type-signature">&lt;static> </span>getSize</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns the size of the file in bytes.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inPath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last"><p>The path to the file.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inUnit</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+            
+            <td class="description last"><p>An optional unit in which to report 
+the file size.  This parameter can be <code>"B"</code>, <code>"KB"</code>, <code>"GB"</code>, or 
+<code>"TB"</code>.  The size will be returned with the thousands separated by 
+commas and the unit value added to the end, e.g. <code>"12,420 KB"</code>.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 294</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The size of the file in bytes, or <code>-1</code> if the
+file doesn't exist.  If a value is passed in <code>inUnit</code>, the size
+is returned as a string.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Number</span> |
 		
 		<span class="param-type">String</span> 
 		
@@ -1184,7 +1650,7 @@ a path, or a single array of strings.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 357</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 489</li></ul></dd>
 	
     
     
@@ -1317,7 +1783,7 @@ an empty string is returned.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 45</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 73</li></ul></dd>
 	
     
     
@@ -1397,6 +1863,8 @@ exist, inDefaultData is returned unmodified.</p>
 		
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -1429,6 +1897,10 @@ exist, inDefaultData is returned unmodified.</p>
             
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last"><p>The path to the file to read.</p></td>
         </tr>
@@ -1458,9 +1930,15 @@ exist, inDefaultData is returned unmodified.</p>
             
             
             
+                <td class="default">
+                
+                    null
+                
+                </td>
             
-            <td class="description last"><p>An object holding default properties
-that will be overriden by the JSON data.</p></td>
+            
+            <td class="description last"><p>An object holding default 
+properties that will be overriden by the JSON data.</p></td>
         </tr>
 	
 	
@@ -1490,7 +1968,7 @@ that will be overriden by the JSON data.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 151</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 185</li></ul></dd>
 	
     
     
@@ -1544,7 +2022,9 @@ that will be overriden by the JSON data.</p></td>
     
     <div class="description">
         <p>Writes a string to a text file.  It will overwrite a file that
-already exists at the path.</p>
+already exists at the path.
+The text is always written out in UTF-8 format, rather than 
+ISO-8859-1, so that accented characters are reproduced correctly.</p>
     </div>
     
     
@@ -1564,7 +2044,11 @@ already exists at the path.</p>
 		<th>Type</th>
 		
 		
+		<th>Argument</th>
 		
+		
+		
+		<th>Default</th>
 		
 		
 		<th class="last">Description</th>
@@ -1590,7 +2074,17 @@ already exists at the path.</p>
             </td>
             
             
+                <td class="attributes">
+                
+                    
+                
+                </td>
             
+            
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last"><p>The path to the file to write to.</p></td>
@@ -1611,10 +2105,56 @@ already exists at the path.</p>
             </td>
             
             
+                <td class="attributes">
+                
+                    
+                
+                </td>
             
+            
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last"><p>The string to write to the file.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inIncludeBOM</code></td>
+            
+            
+            <td class="type">
+            
+                        Boolean
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last"><p>Pass true to create the file with
+a UTF-8 byte order mark at the beginning of the file.</p></td>
         </tr>
 	
 	
@@ -1644,7 +2184,7 @@ already exists at the path.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 84</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 116</li></ul></dd>
 	
     
     
@@ -1675,8 +2215,8 @@ already exists at the path.</p>
     
     
     <div class="description">
-        <p>Writes a JS object to a JSON text file.  The JSON can be optionally
-pretty-printed.</p>
+        <p>Writes a JS object to a JSON text file.  The JSON is pretty-printed
+by default.</p>
     </div>
     
     
@@ -1699,6 +2239,8 @@ pretty-printed.</p>
 		<th>Argument</th>
 		
 		
+		
+		<th>Default</th>
 		
 		
 		<th class="last">Description</th>
@@ -1732,6 +2274,10 @@ pretty-printed.</p>
             
             
             
+                <td class="default">
+                
+                </td>
+            
             
             <td class="description last"><p>The path to the file to write to.</p></td>
         </tr>
@@ -1758,6 +2304,10 @@ pretty-printed.</p>
                 </td>
             
             
+            
+                <td class="default">
+                
+                </td>
             
             
             <td class="description last"><p>The object to convert to JSON.</p></td>
@@ -1788,9 +2338,21 @@ pretty-printed.</p>
             
             
             
+                <td class="default">
+                
+                    "\t"
+                
+                </td>
+            
             
             <td class="description last"><p>An optional string that is used to
-indent the JSON output, e.g., "\t" or "  ".</p></td>
+indent the JSON output.  The default value is "\t".  Because the
+Fireworks <code>file.readline()</code> method returns null if a line is
+longer than 2047 characters, you will generally want to use a
+spacer string to force the JSON output to include only one 
+property per line.  This makes the file slightly larger but it 
+also makes it more likely that the JSON can be read back in by 
+Fireworks successfully.</p></td>
         </tr>
 	
 	
@@ -1820,7 +2382,7 @@ indent the JSON output, e.g., "\t" or "  ".</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 194</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 234</li></ul></dd>
 	
     
     
@@ -1862,7 +2424,7 @@ indent the JSON output, e.g., "\t" or "  ".</p></td>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Oct 01 2012 12:27:46 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Dec 18 2012 18:13:51 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>

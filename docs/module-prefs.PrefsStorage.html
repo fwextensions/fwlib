@@ -182,7 +182,7 @@ properties that will be added to the stored preference data, if any.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/prefs.js, line 134</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/JSONStorage.js, line 134</li></ul></dd>
 	
     
     
@@ -244,6 +244,68 @@ of the previously stored instance, if any.</p>
         <h3 class="subsection-title">Methods</h3>
         
         <dl>
+            
+<dt>
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the named preference to <code>null</code> in the Fireworks preferences 
+file, since there is no way to fully remove a value from that file.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/JSONStorage.js, line 158</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
             
 <dt>
     <h4 class="name" id="remove"><span class="type-signature"></span>remove</h4>
@@ -347,6 +409,561 @@ to the Fireworks preferences file as a JSON string.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/JSONStorage.js, line 145</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="save"><span class="type-signature"></span>save</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Saves all of non-method properties of the <code>PrefsStorage</code> instance
+to the Fireworks preferences file as a JSON string.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/prefs.js, line 145</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+
+
+<section>
+    
+<header>
+    <h2>
+        <span class="ancestors"><a href="module-prefs.html">prefs</a>.</span>
+    
+    PrefsStorage
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <h4 class="name" id="PrefsStorage"><span class="type-signature"></span>new PrefsStorage</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Constructor for a <code>PrefsStorage</code> object that can be saved to the Fireworks
+preferences file.  Any properties added to the object will be saved when
+you call its <code>save()</code> method.  To recover the stored data, instantiate
+a new object with the same name that was originally used to save the 
+preference:</p>
+
+<pre><code>var settings = new prefs.PrefsStorage("MySettings", { foo: 42 });
+alert(settings.foo); // 42
+settings.foo = "bar";
+settings.baz = "hello, world";
+settings.save();
+var newSettings = new prefs.PrefsStorage("MySettings", { foo: 42 });
+alert(newSettings.foo); // "bar"
+alert(newSettings.baz); // "hello, world"
+</code></pre>
+
+<p>Note that the properties <code>save</code> and <code>remove</code> are reserved and cannot be
+modified on a <code>PrefsStorage</code> instance.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inName</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last"><p>The name of the preference.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inDefaults</code></td>
+            
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+            
+            <td class="description last"><p>An optional object containing default 
+properties that will be added to the stored preference data, if any.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/prefs.js, line 134</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A <code>PrefsStorage</code> instance with all of the properties 
+of the previously stored instance, if any.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Object</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the named preference to <code>null</code> in the Fireworks preferences 
+file, since there is no way to fully remove a value from that file.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/JSONStorage.js, line 158</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the named preference to <code>null</code> in the Fireworks preferences 
+file, since there is no way to fully remove a value from that file.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/prefs.js, line 158</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="save"><span class="type-signature"></span>save</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Saves all of non-method properties of the <code>PrefsStorage</code> instance
+to the Fireworks preferences file as a JSON string.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/JSONStorage.js, line 145</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="save"><span class="type-signature"></span>save</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Saves all of non-method properties of the <code>PrefsStorage</code> instance
+to the Fireworks preferences file as a JSON string.</p>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
 	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/prefs.js, line 145</li></ul></dd>
 	
     
@@ -389,7 +1006,7 @@ to the Fireworks preferences file as a JSON string.</p>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Oct 01 2012 12:27:46 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Dec 18 2012 18:13:51 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>
