@@ -1,6 +1,6 @@
 # fwlib: A collection of libraries for Adobe Fireworks extension development
 
-The `fwlib` library offers a collection of utility functions and classes that simplify some aspects of extension development for Adobe Fireworks.  It will hopefully grow in scope as time goes on.  The code is provided as a series of AMD modules.
+The `fwlib` library offers a collection of utility functions and classes that simplify some aspects of extension development for Adobe Fireworks.  It will hopefully grow in scope as time goes on.  The code is provided as a series of [AMD modules](#requiring-fwlib-modules).
 
 
 ## fwlib/files
@@ -104,3 +104,4 @@ Just remember that module paths are relative to the directory from which you loa
 [6]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-prefs.html
 [7]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-DomStorage.html
 [8]: http://dojotoolkit.org/reference-guide/1.8/dojo/json.html
+
