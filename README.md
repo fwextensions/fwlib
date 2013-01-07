@@ -35,6 +35,15 @@ The advantage to using the `DomStorage` class over accessing the `dom.pngText` p
 [Documentation][7]
 
 
+## fwlib/underscore
+
+The [`underscore.js`][9] library provides a large number of handy utilities, including implementations for functions like `forEach()`, `map()` and `reduce()`, which are supported in modern browsers but not in the Fireworks JS engine.  It also includes a simple but powerful templating engine.  
+
+The code is a slightly modified version of the 1.4.3 release of `underscore.js`.  It uses `define()` to create the module instead of exporting a global, and the functions that rely on `setTimeout()` have been removed, since that function is not available within Fireworks.  
+
+[Documentation][10]
+
+
 ## dojo/json
 
 A number of the modules require the `dojo/json` module, since JSON handling is not native to the Fireworks JS engine.  This module is from the 1.7.2 release of the dojo toolkit. 
@@ -90,7 +99,7 @@ require([
 
 The first parameter to `require()` is usually an array of one or more strings that name the modules that the file depends on.  Once those modules have been loaded, the second parameter to `require()` will be called back with references to them.
 
-The module names in the dependencies array are mapped to file paths that are relative to a base directory.  By default, this is the directory from which `fwrequire.js` was loaded, but it can be changed via configuration options.  In the example above, the `"files"` module would be loaded from `lib/fwlib/files.js`.  
+The module names in the dependencies array are mapped to file paths that are relative to a base directory.  By default, this is the directory from which `fwrequire.js` was loaded, but it can be changed via configuration options.  In the example above, the `files` module would be loaded from `lib/fwlib/files.js`.  
 
 Just remember that module paths are relative to the directory from which you loaded `fwrequire.js`, *not* the directory containing the .jsf file that’s using `require()`.  This root directory can be changed via the `baseUrl` property of a configuration object passed to `require()`.  See the [FWRequireJS documentation][3] for more information. 
 
@@ -104,4 +113,5 @@ Just remember that module paths are relative to the directory from which you loa
 [6]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-prefs.html
 [7]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-DomStorage.html
 [8]: http://dojotoolkit.org/reference-guide/1.8/dojo/json.html
-
+[9]: http://documentcloud.github.com/underscore/
+[10]: http://underscorejs.org/
