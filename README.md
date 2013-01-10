@@ -39,7 +39,13 @@ The advantage to using the `DomStorage` class over accessing the `dom.pngText` p
 
 The [`underscore.js`][9] library provides a large number of handy utilities, including implementations for functions like `forEach()`, `map()` and `reduce()`, which are supported in modern browsers but not in the Fireworks JS engine.  It also includes a simple but powerful templating engine.  
 
-The code is a slightly modified version of the 1.4.3 release of `underscore.js`.  It uses `define()` to create the module instead of exporting a global, and the functions that rely on `setTimeout()` have been removed, since that function is not available within Fireworks.  
+The code is a slightly modified version of the 1.4.3 release of `underscore.js`.  It uses `define()` to create the module instead of exporting a global, and the functions that rely on `setTimeout()` have been overridden to throw errors, since that function is not available within Fireworks.  
+
+The library has also been patched so that `_.has()` uses the `in` operator instead of `hasOwnProperty()` when checking for properties on native objects, which don't correctly support `hasOwnProperty()`.
+
+In addition to the standard Underscore methods like `_.isFunction()`, there are equivalent methods for all native Fireworks types, like `_.isImage()`, which can be useful when filtering the selection.  Note that ``_.isGroup()` will return false if the group is actually a smart shape, and `_.isSmartShape()` will return true in that case.  
+
+A `_.createObject()` method has also been added to the Underscore module.  This is a polyfill for the ES5 `Object.create()` method, based on the [`es5-shim`][11] library.  It takes a prototype object as its first parameter, which is set as the prototype of the new object it returns.  It takes an object as an optional second parameter.  Any properties on that parameter will be copied to the new object before it's returned.  
 
 [Documentation][10]
 
@@ -79,7 +85,7 @@ if (typeof require != "function" || !require.version) {
 	fw.runScript(fw.currentScriptDir + "/lib/fwrequire.js"); }
 ```
 
-This if-statement checks that there’s a global function called `require` and that it has a `version` property.  If neither of these is true, then it loads `fwrequire.js` in the `lib/` sub-directory, which will, in turn, load `require.js` from the same directory.  By supplying some configuration settings, you can store the files in a different directory, but FWRequireJS will look in `lib/` by default.
+This if-statement checks that there's a global function called `require` and that it has a `version` property.  If neither of these is true, then it loads `fwrequire.js` in the `lib/` sub-directory, which will, in turn, load `require.js` from the same directory.  By supplying some configuration settings, you can store the files in a different directory, but FWRequireJS will look in `lib/` by default.
 
 Once the FWRequireJS library has been loaded, requiring a module is straightforward: 
 
@@ -101,7 +107,7 @@ The first parameter to `require()` is usually an array of one or more strings th
 
 The module names in the dependencies array are mapped to file paths that are relative to a base directory.  By default, this is the directory from which `fwrequire.js` was loaded, but it can be changed via configuration options.  In the example above, the `files` module would be loaded from `lib/fwlib/files.js`.  
 
-Just remember that module paths are relative to the directory from which you loaded `fwrequire.js`, *not* the directory containing the .jsf file that’s using `require()`.  This root directory can be changed via the `baseUrl` property of a configuration object passed to `require()`.  See the [FWRequireJS documentation][3] for more information. 
+Just remember that module paths are relative to the directory from which you loaded `fwrequire.js`, *not* the directory containing the .jsf file that's using `require()`.  This root directory can be changed via the `baseUrl` property of a configuration object passed to `require()`.  See the [FWRequireJS documentation][3] for more information. 
 
 
 
@@ -115,3 +121,4 @@ Just remember that module paths are relative to the directory from which you loa
 [8]: http://dojotoolkit.org/reference-guide/1.8/dojo/json.html
 [9]: http://documentcloud.github.com/underscore/
 [10]: http://underscorejs.org/
+[11]: https://github.com/kriskowal/es5-shim
