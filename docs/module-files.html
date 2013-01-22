@@ -222,7 +222,7 @@ end or begin with a / when building up a path.  For example:</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 147</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 149</li></ul></dd>
 	
     
     
@@ -411,7 +411,7 @@ returned path from being quoted.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 533</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 540</li></ul></dd>
 	
     
     
@@ -539,7 +539,12 @@ directory will be copied recursively.</p>
             
             
             <td class="description last"><p>The path to the destination directory. <br />
-If this directory doesn't exist, it will be created.</p></td>
+If this directory doesn't exist, it will be created, but only if
+the last directory in the path doesn't exist.  If directories 
+further up the path don't exist, then the call will fail.  For
+example, if <code>file://path/to/a</code> exists, then passing 
+<code>file://path/to/a/folder</code> will create the <code>folder</code> directory. 
+But if only <code>file://path/to</code> exists, the call will fail.</p></td>
         </tr>
 	
 	
@@ -569,7 +574,7 @@ If this directory doesn't exist, it will be created.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 345</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 352</li></ul></dd>
 	
     
     
@@ -631,7 +636,7 @@ temp folder.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 459</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 466</li></ul></dd>
 	
     
     
@@ -765,7 +770,7 @@ created.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 258</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 260</li></ul></dd>
 	
     
     
@@ -897,7 +902,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 427</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 434</li></ul></dd>
 	
     
     
@@ -1035,7 +1040,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 444</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 451</li></ul></dd>
 	
     
     
@@ -1185,7 +1190,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 396</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 403</li></ul></dd>
 	
     
     
@@ -1318,7 +1323,7 @@ last modified.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 274</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 276</li></ul></dd>
 	
     
     
@@ -1503,7 +1508,7 @@ commas and the unit value added to the end, e.g. <code>"12,420 KB"</code>.</p></
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 294</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 296</li></ul></dd>
 	
     
     
@@ -1650,7 +1655,7 @@ a path, or a single array of strings.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 489</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 496</li></ul></dd>
 	
     
     
@@ -1968,7 +1973,7 @@ properties that will be overriden by the JSON data.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 185</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 187</li></ul></dd>
 	
     
     
@@ -2022,9 +2027,9 @@ properties that will be overriden by the JSON data.</p></td>
     
     <div class="description">
         <p>Writes a string to a text file.  It will overwrite a file that
-already exists at the path.
-The text is always written out in UTF-8 format, rather than 
-ISO-8859-1, so that accented characters are reproduced correctly.</p>
+already exists at the path.  The text is always written out in 
+UTF-8 format, rather than ISO-8859-1, so that accented characters 
+are reproduced correctly.</p>
     </div>
     
     
@@ -2087,7 +2092,9 @@ ISO-8859-1, so that accented characters are reproduced correctly.</p>
                 </td>
             
             
-            <td class="description last"><p>The path to the file to write to.</p></td>
+            <td class="description last"><p>The path to the file to write to.
+The full path to the new file must already exist, or the call
+will fail.</p></td>
         </tr>
 	
 	
@@ -2184,7 +2191,7 @@ a UTF-8 byte order mark at the beginning of the file.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 116</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 118</li></ul></dd>
 	
     
     
@@ -2382,7 +2389,7 @@ Fireworks successfully.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 234</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 236</li></ul></dd>
 	
     
     
@@ -2424,7 +2431,7 @@ Fireworks successfully.</p></td>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Dec 18 2012 18:13:51 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Jan 22 2013 13:38:37 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>
