@@ -143,7 +143,7 @@ onto the <code>Layer</code> instance.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 301</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 306</li></ul></dd>
 	
     
     
@@ -239,7 +239,7 @@ is open or closed</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 488</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 615</li></ul></dd>
 	
     
     
@@ -289,7 +289,118 @@ is open or closed</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 395</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 405</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="elemsandsublayers"><span class="type-signature">&lt;readonly> </span>elemsandsublayers<span class="type-signature"> :Array</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>An array of the Fireworks elements and sub-layers that are on the
+layer in the current state.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 419</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="elemsIndex"><span class="type-signature"></span>elemsIndex<span class="type-signature"> :Number</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The index of this layer in its parent's <code>elemsandsublayers</code> array,
+or the layer's <code>sublayerIndex</code> if it is a top layer.  The
+<code>elemsandsublayers</code> array is ordered from top to bottom, while the
+<code>sublayerIndex</code> is ordered from bottom to top.</p>
+
+<p>This index can be used to figure out which element or sub-layer is
+above or below a given <code>Layer</code> instance in its parent layer.</p>
+
+<p>Note that due to limitations in the Fireworks API, this value will
+be wrong if the sub-layer has a sibling with exactly the same name
+and number of elements and sub-layers.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 516</li></ul></dd>
 	
     
     
@@ -339,7 +450,7 @@ is open or closed</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 335</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 341</li></ul></dd>
 	
     
     
@@ -389,7 +500,57 @@ is open or closed</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 514</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 641</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="isWebLayer"><span class="type-signature">&lt;readonly> </span>isWebLayer<span class="type-signature"> :Boolean</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Whether the layer is a web layer.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 654</li></ul></dd>
 	
     
     
@@ -440,7 +601,7 @@ is open or closed</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 355</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 365</li></ul></dd>
 	
     
     
@@ -464,8 +625,8 @@ is open or closed</p>
 <dd>
     
     <div class="description">
-        <p>The <code>Layer</code> that is immediately above this layer in the <em>Layers</em> 
-panel.  This will be <code>null</code> if the layer is at the very top of the 
+        <p>The <code>Layer</code> that is immediately above this layer in the <em>Layers</em>
+panel.  This will be <code>null</code> if the layer is at the very top of the
 stack.</p>
     </div>
     
@@ -492,7 +653,7 @@ stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 580</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 720</li></ul></dd>
 	
     
     
@@ -516,8 +677,8 @@ stack.</p>
 <dd>
     
     <div class="description">
-        <p>The <code>Layer</code> that is immediately below this layer in the <em>Layers</em> 
-panel.  This will be <code>null</code> if the layer is at the very bottom of 
+        <p>The <code>Layer</code> that is immediately below this layer in the <em>Layers</em>
+panel.  This will be <code>null</code> if the layer is at the very bottom of
 the stack.</p>
     </div>
     
@@ -544,7 +705,7 @@ the stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 616</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 756</li></ul></dd>
 	
     
     
@@ -594,7 +755,7 @@ the stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 462</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 589</li></ul></dd>
 	
     
     
@@ -644,7 +805,7 @@ the stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 371</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 381</li></ul></dd>
 	
     
     
@@ -694,7 +855,7 @@ the stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 328</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 334</li></ul></dd>
 	
     
     
@@ -718,9 +879,13 @@ the stack.</p>
 <dd>
     
     <div class="description">
-        <p>The position of the layer among its sub-layer siblings under its 
-immediate parent.  If the layer is at the top level, this will be 
+        <p>The position of the layer among its sub-layer siblings under its
+immediate parent.  If the layer is at the top level, this will be
 its position among the top-level layers.</p>
+
+<p>Note that this index is from the bottom up, so the bottom-most
+sub-layer in a layer has a <code>sublayerIndex</code> of <code>0</code>.  This is the
+reverse order of the native <code>elemsandsublayers</code> array.</p>
     </div>
     
     
@@ -746,7 +911,7 @@ its position among the top-level layers.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 344</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 354</li></ul></dd>
 	
     
     
@@ -797,7 +962,7 @@ sub-layers are returned.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 409</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 433</li></ul></dd>
 	
     
     
@@ -822,7 +987,7 @@ sub-layers are returned.</p>
     
     <div class="description">
         <p>The top-level <code>Layer</code> that is immediately above the top-level layer
-that contains this layer.  If this layer is at the top of the 
+that contains this layer.  If this layer is at the top of the
 stack in the <em>Layers</em> panel, than this property will be <code>undefined</code>.</p>
     </div>
     
@@ -849,7 +1014,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 549</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 689</li></ul></dd>
 	
     
     
@@ -900,7 +1065,7 @@ at the top level, then the same layer is returned.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 528</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 668</li></ul></dd>
 	
     
     
@@ -925,7 +1090,7 @@ at the top level, then the same layer is returned.</p>
     
     <div class="description">
         <p>The top-level <code>Layer</code> that is immediately below the top-level layer
-that contains this layer.  If this layer is at the bottom of the 
+that contains this layer.  If this layer is at the bottom of the
 stack in the <em>Layers</em> panel, than this property will be <code>undefined</code>.</p>
     </div>
     
@@ -952,7 +1117,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 565</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 705</li></ul></dd>
 	
     
     
@@ -1002,7 +1167,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 437</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 564</li></ul></dd>
 	
     
     
@@ -1063,7 +1228,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 664</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 801</li></ul></dd>
 	
     
     
@@ -1097,11 +1262,8 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
         <p>Removes the layer from the document.  This has the side effect of
 causing all the other <code>Layer</code> instances in the <code>LayerTree</code> to go
 "stale", since deleting a layer may cause the other layers in the
-document to shift their index.  Accessing the properties on a stale 
+document to shift their index.  Accessing the properties on a stale
 <code>Layer</code> instance will throw an exception.</p>
-
-<p>After calling <code>layer.remove()</code>, you should call <code>refresh()</code> on the 
-<code>LayerTree</code> that contains the <code>Layer</code>.</p>
     </div>
     
     
@@ -1131,7 +1293,7 @@ document to shift their index.  Accessing the properties on a stale
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 650</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 787</li></ul></dd>
 	
     
     
@@ -1264,7 +1426,7 @@ layer's <code>elements</code> array.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 710</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 847</li></ul></dd>
 	
     
     
@@ -1353,7 +1515,7 @@ layer's <code>elements</code> array.</p></td>
 	
         <tr>
             
-                <td class="name"><code>inLocked</code></td>
+                <td class="name"><code>inVisible</code></td>
             
             
             <td class="type">
@@ -1397,7 +1559,7 @@ layer's <code>elements</code> array.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 683</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 820</li></ul></dd>
 	
     
     
@@ -1429,7 +1591,9 @@ layer's <code>elements</code> array.</p></td>
     
     <div class="description">
         <p>Returns a <code>Layer</code> instance accessed by its index in the layer's
-list of immediate sub-layers or by its name.</p>
+list of immediate sub-layers or by its name.  Note that the index
+is different than the sub-layer's corresponding index in its parent's
+<code>elemsandsublayers</code> array.</p>
     </div>
     
     
@@ -1508,7 +1672,7 @@ list of immediate sub-layers or by its name.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 424</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 450</li></ul></dd>
 	
     
     
@@ -1528,7 +1692,143 @@ list of immediate sub-layers or by its name.</p>
     
             
 <div class="param-desc">
-    <p>A <code>Layer</code> instance representing the specified 
+    <p>A <code>Layer</code> instance representing the specified
+sub-layer, or <code>undefined</code> if it can't be found.</p>
+</div>
+
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+		<span class="param-type">Layer</span> 
+		
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="sublayerByElemsIndex"><span class="type-signature"></span>sublayerByElemsIndex</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Returns a <code>Layer</code> instance accessed by its index in the layer's
+<code>elemsandsublayers</code> array, which is different from the layer's
+<code>sublayerIndex</code>, since <code>elemsandsublayers</code> contains both layers and
+elements.  You would use this when walking a layer's
+<code>elemsandsublayers</code> array to access the <code>Layer</code> instance
+corresponding to a particular sub-layer in that array.</p>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inIndex</code></td>
+            
+            
+            <td class="type">
+            
+                        Number
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The 0-based index of a sub-layer in its
+parent's <code>elemsandsublayers</code> array.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 471</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>A <code>Layer</code> instance representing the specified
 sub-layer, or <code>undefined</code> if it can't be found.</p>
 </div>
 
@@ -1573,7 +1873,7 @@ sub-layer, or <code>undefined</code> if it can't be found.</p>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Jan 29 2013 23:08:01 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Feb 25 2013 23:26:19 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>

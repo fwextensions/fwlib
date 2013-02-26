@@ -14,7 +14,7 @@ The `fwlib/files` module provides a number of utility functions that simplify wo
 
 The `fwlib/layers` module includes a number of utility functions and classes that make it easier to inspect and manipulate the layers in a Fireworks document. The native layers API was sufficient back before sub-layers were introduced, but it's now much harder to understand the layer structure.
 
-For instance, if an element is selected and you want to move the top-level layer that contains that element up or down in the stack, how do you find the top-level layer? You have to call `dom.getParentLayerNum(dom.currentLayerNum)`, check if the if result is `-1`, and if not, call it again with the result, until you get a `-1`. There's also no easy way to get a list of all the top-level layers. The classes and functions in this module simplify this process.
+For instance, if an element is selected and you want to move the top-level layer that contains that element up or down in the stack, how do you find the top-level layer? You have to call `dom.getParentLayerNum(dom.currentLayerNum)`, check if the if result is `-1`, and if not, call it again with the result, until you get a `-1`. There's also no easy way to figure out which layer is directly above or below another one.  The classes and functions in this module simplify this process.
 
 [Documentation][5]
 
@@ -43,7 +43,7 @@ The code is a slightly modified version of the 1.4.3 release of `underscore.js`.
 
 The library has also been patched so that `_.has()` uses the `in` operator instead of `hasOwnProperty()` when checking for properties on native objects, which don't correctly support `hasOwnProperty()`.
 
-In addition to the standard Underscore methods like `_.isFunction()`, there are equivalent methods for all native Fireworks types, like `_.isImage()`, which can be useful when filtering the selection.  Note that ``_.isGroup()` will return false if the group is actually a smart shape, and `_.isSmartShape()` will return true in that case.  
+In addition to the standard Underscore methods like `_.isFunction()`, there are equivalent methods for all native Fireworks types, like `_.isImage()`, which can be useful when filtering the selection.  Note that `_.isGroup()` will return false if the group is actually a smart shape, and `_.isSmartShape()` will return true in that case.  
 
 A `_.createObject()` method has also been added to the Underscore module.  This is a polyfill for the ES5 `Object.create()` method, based on the [`es5-shim`][11] library.  It takes a prototype object as its first parameter, which is set as the prototype of the new object it returns.  It takes an object as an optional second parameter.  Any properties on that parameter will be copied to the new object before it's returned.  
 

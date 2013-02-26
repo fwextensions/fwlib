@@ -43,15 +43,16 @@
             <div class="description"><p>The <code>fwlib/layers</code> module includes a number of utility functions and classes
 that make it easier to inspect and manipulate the layers in a Fireworks
 document.  The native layers API was sufficient back before sub-layers were
-introduced, but it's now much harder to understand the layer structure.  </p>
+introduced, but it's now much harder to understand and manipulate the layer
+structure.</p>
 
-<p>For instance, if an element is selected and you want to move the top-level 
+<p>For instance, if an element is selected and you want to move the top-level
 layer that contains that element up or down in the stack, how do you find
 the top-level layer?  You have to call <code>dom.getParentLayerNum(dom.currentLayerNum)</code>,
 check if the if result is <code>-1</code>, and if not, call it again with the result,
-until you get a <code>-1</code>.  There's also no easy way to get a list of all the
-top-level layers.  The classes and functions in this module simplify this
-process.</p></div>
+until you get a <code>-1</code>.  There's also no easy way to figure out which layer is
+directly above or below another one.  The classes and functions in this
+module simplify this process.</p></div>
         
         
         
@@ -128,13 +129,13 @@ process.</p></div>
     
     <div class="description">
         <p>Displays a textual representation of the layer structure of a document in
-an alert dialog.  This can help with debugging a command that modifies 
+an alert dialog.  This can help with debugging a command that modifies
 the layer structure, so you can get a snapshot of the layers at different
 points in the command.</p>
 
-<p>Each line in the representation shows the layer index and the name of 
+<p>Each line in the representation shows the layer index and the name of
 the layer.  The indentation of the line indicates the parent/child
-relationships of the layers, simliar to how they're shown in the <em>Layers</em> 
+relationships of the layers, simliar to how they're shown in the <em>Layers</em>
 panel.</p>
 
 <pre><code>5: Web Layer
@@ -207,7 +208,7 @@ panel.</p>
                 </td>
             
             
-            <td class="description last"><p>The document whose layers should be 
+            <td class="description last"><p>The document whose layers should be
 shown.  This defaults to the current document if not specified.</p></td>
         </tr>
 	
@@ -243,7 +244,7 @@ shown.  This defaults to the current document if not specified.</p></td>
                 </td>
             
             
-            <td class="description last"><p>Pass true to suppress the 
+            <td class="description last"><p>Pass true to suppress the
 <code>alert()</code> dialog and just return the layer structure as a string.</p></td>
         </tr>
 	
@@ -274,7 +275,7 @@ shown.  This defaults to the current document if not specified.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 1024</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 1162</li></ul></dd>
 	
     
     
@@ -328,7 +329,8 @@ of the document's layer stack.  Otherwise, nothing.</p>
     
     
     <div class="description">
-        <p>Copies the elements on a layer from one document to another.</p>
+        <p>Copies the elements on a layer from one document to another.  This
+method is provisional and may not work in all cases.</p>
     </div>
     
     
@@ -454,8 +456,8 @@ of the document's layer stack.  Otherwise, nothing.</p>
                 </td>
             
             
-            <td class="description last"><p>The document to copy the layer's 
-elements from.  If this isn't included, the current document is 
+            <td class="description last"><p>The document to copy the layer's
+elements from.  If this isn't included, the current document is
 used as the source.</p></td>
         </tr>
 	
@@ -486,7 +488,7 @@ used as the source.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 745</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 883</li></ul></dd>
 	
     
     
@@ -517,8 +519,8 @@ used as the source.</p></td>
     
     
     <div class="description">
-        <p>Copies the elements on a layer from one page to another in the same 
-document.</p>
+        <p>Copies the elements on a layer from one page to another in the same
+document.  This method is provisional and may not work in all cases.</p>
     </div>
     
     
@@ -636,7 +638,7 @@ document.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 833</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 971</li></ul></dd>
 	
     
     
@@ -788,7 +790,7 @@ defaults to the current document if not specified.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 927</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 1065</li></ul></dd>
 	
     
     
@@ -842,7 +844,7 @@ or <code>-1</code> if a layer with that name can't be found.</p>
     
     
     <div class="description">
-        <p>Returns the index of the top-level layer that contains the layer 
+        <p>Returns the index of the top-level layer that contains the layer
 specified by <code>inLayerIndex</code>.</p>
     </div>
     
@@ -938,7 +940,7 @@ specified by <code>inLayerIndex</code>.</p>
                 </td>
             
             
-            <td class="description last"><p>The document to look in to find the 
+            <td class="description last"><p>The document to look in to find the
 layer.  This defaults to the current document if not specified.</p></td>
         </tr>
 	
@@ -969,7 +971,7 @@ layer.  This defaults to the current document if not specified.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 949</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 1087</li></ul></dd>
 	
     
     
@@ -989,7 +991,7 @@ layer.  This defaults to the current document if not specified.</p></td>
     
             
 <div class="param-desc">
-    <p>The index of the top-level layer in the Fireworks 
+    <p>The index of the top-level layer in the Fireworks
 layers stack that contains the layer specified by <code>inLayerIndex</code>.</p>
 </div>
 
@@ -1088,7 +1090,7 @@ in the document.</p>
                 </td>
             
             
-            <td class="description last"><p>The document containing the layers, or 
+            <td class="description last"><p>The document containing the layers, or
 the current document if not specified.</p></td>
         </tr>
 	
@@ -1119,7 +1121,7 @@ the current document if not specified.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 974</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 1112</li></ul></dd>
 	
     
     
@@ -1183,7 +1185,7 @@ the current document if not specified.</p></td>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Jan 29 2013 23:08:01 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Feb 25 2013 23:26:19 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>

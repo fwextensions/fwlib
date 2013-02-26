@@ -57,13 +57,13 @@ just create a new instance:</p>
 
 <pre><code>var tree = new layers.LayerTree();
 // shows index of layer named "Dialog"
-alert(tree.layer("Dialog").index); 
+alert(tree.layer("Dialog").index);
 </code></pre>
 
 <p>The <code>LayerTree</code> is generated for the layers on the current frame of the
 document.  Change <code>dom.currentFrameNum</code> before creating a new <code>LayerTree</code>
 to get the layers on a different frame.  Due to bugs in the layers API,
-if you change <code>dom.currentFrameNum</code> after creating the <code>LayerTree</code>, the
+if you change <code>dom.currentFrameNum</code> <em>after</em> creating the <code>LayerTree</code>, the
 wrong layer is likely to be returned or modified when accessing a layer
 by name or index.</p>
 
@@ -132,8 +132,8 @@ class.</p>
                 </td>
             
             
-            <td class="description last"><p>An optional reference to an open 
-Fireworks document.  If not provided, the <code>LayerTree</code> will default 
+            <td class="description last"><p>An optional reference to an open
+Fireworks document.  If not provided, the <code>LayerTree</code> will default
 to the current document.</p></td>
         </tr>
 	
@@ -164,7 +164,7 @@ to the current document.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 119</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 120</li></ul></dd>
 	
     
     
@@ -260,7 +260,7 @@ of a layer to set the document's <code>currentLayerNum</code> value.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 212</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 217</li></ul></dd>
 	
     
     
@@ -284,9 +284,9 @@ of a layer to set the document's <code>currentLayerNum</code> value.</p>
 <dd>
     
     <div class="description">
-        <p>The top-level <code>Layer</code> object that contains the current layer of the 
-document.  Set this to the index or name of a layer to set the 
-document's <code>currentLayerNum</code> value to that layer's top-level 
+        <p>The top-level <code>Layer</code> object that contains the current layer of the
+document.  Set this to the index or name of a layer to set the
+document's <code>currentLayerNum</code> value to that layer's top-level
 ancestor.</p>
     </div>
     
@@ -313,7 +313,7 @@ ancestor.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 240</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 245</li></ul></dd>
 	
     
     
@@ -337,8 +337,8 @@ ancestor.</p>
 <dd>
     
     <div class="description">
-        <p>An array of <code>Layer</code> instances representing all of the layers in the 
-document. </p>
+        <p>An array of <code>Layer</code> instances representing all of the layers in the
+document.</p>
 
 <p>Note that this getter returns a copy of the layers array every time
 it's accessed, so if you need just one layer, it's a little more
@@ -368,7 +368,7 @@ efficient to call the <code>layer()</code> method.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 187</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 192</li></ul></dd>
 	
     
     
@@ -418,7 +418,7 @@ efficient to call the <code>layer()</code> method.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 199</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 204</li></ul></dd>
 	
     
     
@@ -529,7 +529,7 @@ or by its name.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 268</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 273</li></ul></dd>
 	
     
     
@@ -549,7 +549,7 @@ or by its name.</p>
     
             
 <div class="param-desc">
-    <p>A <code>Layer</code> instance representing the specified 
+    <p>A <code>Layer</code> instance representing the specified
 layer, or <code>undefined</code> if it can't be found.</p>
 </div>
 
@@ -583,11 +583,15 @@ layer, or <code>undefined</code> if it can't be found.</p>
     
     
     <div class="description">
-        <p>Updates the <code>LayerTree</code>'s internal data to reflect the current 
-state of the document and sets any existing <code>Layer</code> instances 
-associated with this tree to a stale state.  This method should be 
-called whenever a layer is deleted or rearranged in the stack, 
+        <p>Updates the <code>LayerTree</code>'s internal data to reflect the current
+state of the document and sets any existing <code>Layer</code> instances
+associated with this tree to a stale state.  This method should be
+called whenever a layer is deleted or rearranged in the stack,
 which can cause one or more of the layers' indexes to change.</p>
+
+<p>Instead of calling <code>refresh()</code>, you can also just create a new
+<code>LayerTree</code> instance, which will reflect the current state of the
+document.</p>
     </div>
     
     
@@ -617,7 +621,7 @@ which can cause one or more of the layers' indexes to change.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 143</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 148</li></ul></dd>
 	
     
     
@@ -659,7 +663,7 @@ which can cause one or more of the layers' indexes to change.</p>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Tue Jan 29 2013 23:08:01 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Feb 25 2013 23:26:19 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>
