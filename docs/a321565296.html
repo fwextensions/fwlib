@@ -52,9 +52,9 @@
     
     <div class="description">
         <p>Constructor for a <code>DomStorage</code> object that can be saved to a Fireworks
-document's <code>dom.pngText</code> storage area.  Any properties added to the 
-object will be saved when you call its <code>save()</code> method.  To recover the 
-stored data, instantiate a new object with the same name that was 
+document's <code>dom.pngText</code> storage area.  Any properties added to the
+object will be saved when you call its <code>save()</code> method.  To recover the
+stored data, instantiate a new object with the same name that was
 originally used to save the preference:</p>
 
 <pre><code>require(["fwlib/DomStorage"], function(DomStorage) {
@@ -69,50 +69,54 @@ originally used to save the preference:</p>
 });
 </code></pre>
 
-<p>The data is saved with the document itself, rather than in an external 
-file, which ensures that it's always available if the user distributes 
-the file to someone else. </p>
+<p>The data is saved with the document itself, rather than in an external
+file, which ensures that it's always available if the user distributes
+the file to someone else.</p>
 
-<p>The advantage to using the <code>DomStorage</code> class over accessing the 
+<p>The advantage to using the <code>DomStorage</code> class over accessing the
 <code>dom.pngText</code> property directly is that the latter supports only string
 values.  So if you do:</p>
 
 <pre><code>dom.pngText.foo = [1, 2, 3];
 </code></pre>
 
-<p>and then save the file, the next time you reopen it, the array value 
-will have been turned into the source string version of that value: 
+<p>and then save the file, the next time you reopen it, the array value
+will have been turned into the source string version of that value:
 <code>"[1,2,3]"</code>.  Even more confusing, <code>dom.pngText.foo</code> will appear to still
 be an array after you set it.  It's only after the document is saved,
 closed and reopened do you discover it's been converted into a string.</p>
 
-<p>And to make matters worse, each property on <code>dom.pngText</code> is limited to 
-1023 characters.  So if you think you can just stringify some data and 
+<p>And to make matters worse, each property on <code>dom.pngText</code> is limited to
+1023 characters.  So if you think you can just stringify some data and
 store it, think again.  It will get cut off if it's too long.</p>
 
 <p>The <code>DomStorage</code> class works around these limitations by converting the
-data to JSON, chunking up the JSON into strings of 1023 characters, 
+data to JSON, chunking up the JSON into strings of 1023 characters,
 storing each one, and keeping track of how many chunks there are.  If the
-name of your object is <code>"foo"</code>, then the number of string chunks it 
-contains is stored in <code>dom.pngText.foo</code>.  The first chunk is 
+name of your object is <code>"foo"</code>, then the number of string chunks it
+contains is stored in <code>dom.pngText.foo</code>.  The first chunk is
 <code>dom.pngText.foo_0</code>, the second is <code>dom.pngText.foo_1</code>, and so on.</p>
 
-<p>When you later instantiate the <code>DomStorage</code> object again, the constructor 
-grabs all of the related strings that are stored in <code>dom.pngText</code>, joins 
-them, and evals that.  The resulting properties are then copied onto the 
-instance.  </p>
+<p>When you later instantiate the <code>DomStorage</code> object again, the constructor
+grabs all of the related strings that are stored in <code>dom.pngText</code>, joins
+them, and evals that.  The resulting properties are then copied onto the
+instance.</p>
 
 <p>One limitation of <code>dom.pngText</code> is that once a property has been added to
 it, there is no way to remove it.  So when you call <code>remove()</code> on an
 instance, the best it can do is go through all of the properties it had
 previously used and set them to <code>""</code>.  The same thing happens when an
-instance is saved and its JSON is shorter than it was previously.  </p>
+instance is saved and its JSON is shorter than it was previously.</p>
 
-<p>Note that the properties <code>save</code> and <code>remove</code> are reserved and cannot be
-modified on a <code>DomStorage</code> instance.  Also, the data is stored on the
-<code>dom.pngText</code> of the first page in the document, as each page in a 
-document has its own copy of the property.  If the user deletes the first
-page or rearranges it, the data will be lost.</p>
+<p>Note that the data is stored on the <code>dom.pngText</code> of the first page in
+the document, as each page in a document has its own copy of the property.
+If the user deletes the first page, the data will be lost.  If the user
+moves the first page to a different location, the saved data won't be
+found by default, but you can pass <code>true</code> as the third argument to the
+<code>DomStorage</code> constructor to force it to check all the pages</p>
+
+<p>Also note that the properties <code>save</code> and <code>remove</code> are reserved and cannot
+be modified on a <code>DomStorage</code> instance.</p>
     </div>
     
     
@@ -179,7 +183,7 @@ page or rearranges it, the data will be lost.</p>
 	
         <tr>
             
-                <td class="name"><code>inDefaults</code></td>
+                <td class="name"><code>inDefaultData</code></td>
             
             
             <td class="type">
@@ -207,8 +211,46 @@ page or rearranges it, the data will be lost.</p>
                 </td>
             
             
-            <td class="description last"><p>An optional object containing default 
+            <td class="description last"><p>An optional object containing default
 properties that will be added to the instance.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inCheckAllPages</code></td>
+            
+            
+            <td class="type">
+            
+                        Boolean
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last"><p>Pass <code>true</code> to check all the
+pages in the document if a previously saved <code>DomStorage</code> is not
+found on the first page, and copy the first one found back to the
+first page.</p></td>
         </tr>
 	
 	
@@ -238,7 +280,7 @@ properties that will be added to the instance.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 100</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 108</li></ul></dd>
 	
     
     
@@ -258,7 +300,7 @@ properties that will be added to the instance.</p></td>
     
             
 <div class="param-desc">
-    <p>A <code>DomStorage</code> instance with all of the properties 
+    <p>A <code>DomStorage</code> instance with all of the properties
 of the previously stored instance, if any.</p>
 </div>
 
@@ -310,7 +352,7 @@ of the previously stored instance, if any.</p>
     
     
     <div class="description">
-        <p>Sets all of the <code>dom.pngText</code> properties used by the instance to 
+        <p>Sets all of the <code>dom.pngText</code> properties used by the instance to
 <code>""</code>, since there is no way to completely remove a property from it.</p>
     </div>
     
@@ -341,7 +383,7 @@ of the previously stored instance, if any.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 163</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 172</li></ul></dd>
 	
     
     
@@ -438,10 +480,10 @@ JSON string and stores the strings as one or more properties on the
                 </td>
             
             
-            <td class="description last"><p>Pass true to prevent the 
+            <td class="description last"><p>Pass true to prevent the
 <code>DomStorage</code> instance from dirtying the document.  By default,
 calling <code>save()</code> will leave the document in a dirty state, so
-that the user knows there's an unsaved change.  Setting 
+that the user knows there's an unsaved change.  Setting
 <code>dom.pngText</code> doesn't normally dirty the document.</p></td>
         </tr>
 	
@@ -472,7 +514,7 @@ that the user knows there's an unsaved change.  Setting
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 117</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/DomStorage.js, line 126</li></ul></dd>
 	
     
     
@@ -514,7 +556,7 @@ that the user knows there's an unsaved change.  Setting
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Feb 25 2013 23:26:19 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Sat Mar 09 2013 14:37:07 GMT-0800 (PST)
 </footer>
 
 <script> sh_highlightDocument(); </script>
