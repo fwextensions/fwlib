@@ -138,6 +138,44 @@ to the current document.</p></td>
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>inIgnoreWebLayers</code></td>
+            
+            
+            <td class="type">
+            
+                        Boolean
+                        
+                    
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last"><p>Pass true to create a <code>LayerTree</code>
+that does not include any <code>Layer</code> instances for the web layers in
+the document, which makes looping over the layers a little simpler
+if you want to ignore slices and hotspots.</p></td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -164,7 +202,7 @@ to the current document.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 120</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 124</li></ul></dd>
 	
     
     
@@ -234,7 +272,8 @@ current document.</p>
     
     <div class="description">
         <p>The current <code>Layer</code> of the document.  Set this to the index or name
-of a layer to set the document's <code>currentLayerNum</code> value.</p>
+of a layer, or to a <code>Layer</code> instance, to set the document's
+<code>currentLayerNum</code> value.</p>
     </div>
     
     
@@ -260,7 +299,7 @@ of a layer to set the document's <code>currentLayerNum</code> value.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 217</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 262</li></ul></dd>
 	
     
     
@@ -285,9 +324,9 @@ of a layer to set the document's <code>currentLayerNum</code> value.</p>
     
     <div class="description">
         <p>The top-level <code>Layer</code> object that contains the current layer of the
-document.  Set this to the index or name of a layer to set the
-document's <code>currentLayerNum</code> value to that layer's top-level
-ancestor.</p>
+document.  Set this to the index or name of a layer, or to a <code>Layer</code>
+instance, to set the document's <code>currentLayerNum</code> value to that
+layer's top-level ancestor.</p>
     </div>
     
     
@@ -313,7 +352,7 @@ ancestor.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 245</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 292</li></ul></dd>
 	
     
     
@@ -368,7 +407,7 @@ efficient to call the <code>layer()</code> method.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 192</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 203</li></ul></dd>
 	
     
     
@@ -418,7 +457,108 @@ efficient to call the <code>layer()</code> method.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 204</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 215</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="webLayer"><span class="type-signature"></span>webLayer<span class="type-signature"> :Layer</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>A <code>Layer</code> instance representing the top-most web layer.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 227</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="webLayers"><span class="type-signature"></span>webLayers<span class="type-signature"> :[Layer]</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>An array of the <code>Layer</code> instances representing the web layers in
+the document.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 244</li></ul></dd>
 	
     
     
@@ -529,7 +669,7 @@ or by its name.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 273</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 322</li></ul></dd>
 	
     
     
@@ -621,7 +761,7 @@ document.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 148</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 155</li></ul></dd>
 	
     
     
@@ -663,7 +803,7 @@ document.</p>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Sat Mar 09 2013 14:37:07 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Thu Mar 28 2013 20:09:49 GMT-0700 (PDT)
 </footer>
 
 <script> sh_highlightDocument(); </script>
