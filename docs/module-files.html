@@ -40,9 +40,9 @@
     
     
         
-            <div class="description"><p>The <code>fwlib/files</code> module includes utility functions for working with 
+            <div class="description"><p>The <code>fwlib/files</code> module includes utility functions for working with
 files.  Where the methods accept a path parameter, you can pass in either
-a path string or an array of strings that make up the path.  The array will 
+a path string or an array of strings that make up the path.  The array will
 be combined into a single string with a single / between each part of the
 path.  This means you don't have to worry about whether the substrings
 end or begin with a / when building up a path.  For example:</p>
@@ -222,7 +222,7 @@ end or begin with a / when building up a path.  For example:</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 149</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 204</li></ul></dd>
 	
     
     
@@ -277,11 +277,11 @@ end or begin with a / when building up a path.  For example:</p>
     <div class="description">
         <p>Returns a path that's appropriate for the local OS.  Most Fireworks
 path arguments are URLs that begin with <code>file://</code>, which can't be
-used in the OS X or Windows shells.  For instance, 
+used in the OS X or Windows shells.  For instance,
 <code>"file:///C|/Program%20Files/Adobe"</code> would be returned as
-<code>"C:\Program Files\Adobe"</code>.  Escaped characters in the URL are 
+<code>"C:\Program Files\Adobe"</code>.  Escaped characters in the URL are
 unescaped in the returned path.  By default, the path is also
-wrapped in quotes, so that spaces in the path don't trip up the 
+wrapped in quotes, so that spaces in the path don't trip up the
 command line shell.</p>
     </div>
     
@@ -380,7 +380,7 @@ command line shell.</p>
                 </td>
             
             
-            <td class="description last"><p>Pass true to prevent the 
+            <td class="description last"><p>Pass true to prevent the
 returned path from being quoted.</p></td>
         </tr>
 	
@@ -411,7 +411,7 @@ returned path from being quoted.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 540</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 595</li></ul></dd>
 	
     
     
@@ -538,12 +538,12 @@ directory will be copied recursively.</p>
             
             
             
-            <td class="description last"><p>The path to the destination directory. <br />
+            <td class="description last"><p>The path to the destination directory.
 If this directory doesn't exist, it will be created, but only if
-the last directory in the path doesn't exist.  If directories 
+the last directory in the path doesn't exist.  If directories
 further up the path don't exist, then the call will fail.  For
-example, if <code>file://path/to/a</code> exists, then passing 
-<code>file://path/to/a/folder</code> will create the <code>folder</code> directory. 
+example, if <code>file://path/to/a</code> exists, then passing
+<code>file://path/to/a/folder</code> will create the <code>folder</code> directory.
 But if only <code>file://path/to</code> exists, the call will fail.</p></td>
         </tr>
 	
@@ -574,7 +574,7 @@ But if only <code>file://path/to</code> exists, the call will fail.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 352</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 407</li></ul></dd>
 	
     
     
@@ -636,7 +636,7 @@ temp folder.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 466</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 521</li></ul></dd>
 	
     
     
@@ -656,7 +656,7 @@ temp folder.</p>
     
             
 <div class="param-desc">
-    <p>The path to the new temp directory or null if 
+    <p>The path to the new temp directory or null if
 there was a problem creating the directory.</p>
 </div>
 
@@ -770,7 +770,7 @@ created.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 260</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 315</li></ul></dd>
 	
     
     
@@ -902,7 +902,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 434</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 489</li></ul></dd>
 	
     
     
@@ -929,7 +929,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
     
             
 <div class="param-desc">
-    <p>The path to the directory containing script that 
+    <p>The path to the directory containing script that
 defined <code>inFunction</code>.</p>
 </div>
 
@@ -1040,7 +1040,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 451</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 506</li></ul></dd>
 	
     
     
@@ -1100,14 +1100,14 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
     
     
     <div class="description">
-        <p>Returns the <code>file://</code> URL to the script file that called the 
+        <p>Returns the <code>file://</code> URL to the script file that called the
 function.  In complicated scripts, it's often useful to load other
 scripts that are located in the same directory or nearby directories.
 Normally, you can access the current script's path via
 <code>fw.currentScriptDir</code>, but that value becomes null after one script
-calls another via <code>fw.runScript()</code>.  </p>
+calls another via <code>fw.runScript()</code>.</p>
 
-<p>The <code>getCurrentScriptURL()</code> function works around this by exploiting 
+<p>The <code>getCurrentScriptURL()</code> function works around this by exploiting
 the fact that JS exceptions in Fireworks have a <code>fileName</code> property
 that points to the script that was executing when the exception
 occurred.  So you can pass in a function that is guaranteed to throw
@@ -1190,7 +1190,7 @@ an exception.  The simplest is <code>function(){0()}</code>.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 403</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 458</li></ul></dd>
 	
     
     
@@ -1323,7 +1323,7 @@ last modified.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 276</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 331</li></ul></dd>
 	
     
     
@@ -1475,9 +1475,9 @@ file doesn't exist.</p>
                 </td>
             
             
-            <td class="description last"><p>An optional unit in which to report 
-the file size.  This parameter can be <code>"B"</code>, <code>"KB"</code>, <code>"GB"</code>, or 
-<code>"TB"</code>.  The size will be returned with the thousands separated by 
+            <td class="description last"><p>An optional unit in which to report
+the file size.  This parameter can be <code>"B"</code>, <code>"KB"</code>, <code>"GB"</code>, or
+<code>"TB"</code>.  The size will be returned with the thousands separated by
 commas and the unit value added to the end, e.g. <code>"12,420 KB"</code>.</p></td>
         </tr>
 	
@@ -1508,7 +1508,7 @@ commas and the unit value added to the end, e.g. <code>"12,420 KB"</code>.</p></
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 296</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 351</li></ul></dd>
 	
     
     
@@ -1569,7 +1569,7 @@ is returned as a string.</p>
 There is guaranteed to be only one slash between each argument, so
 so calling <code>files.path("foo/bar", "My Command.jsf")</code> will return
 <code>"foo/bar/My Command.jsf"</code>.  This avoids having to constantly check
-whether a directory path you have stored in a variable has a 
+whether a directory path you have stored in a variable has a
 trailing / or not.</p>
 
 <p>You can also pass in a single array of strings that will be combined
@@ -1655,7 +1655,7 @@ a path, or a single array of strings.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 496</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 551</li></ul></dd>
 	
     
     
@@ -1788,7 +1788,7 @@ an empty string is returned.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 73</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 79</li></ul></dd>
 	
     
     
@@ -1820,12 +1820,181 @@ an empty string is returned.</p>
 	</dt>
 	<dd>
 		
-		<span class="param-type">String</span> 
+		<span class="param-type">String</span> |
+		
+		<span class="param-type">Array</span> 
 		
 	</dd>
 </dl>
 
         
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="readChunks"><span class="type-signature">&lt;static> </span>readChunks</h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Reads the contents of a text file one chunk at a time, passing each
+            chunk to the <code>inCallback</code> parameter.  If the file does not exist,
+            the callback will never be called.</p>
+
+<pre><code>        The file reading is done synchronously, but breaking the reads up
+        into chunks may sometimes be more efficient for very long files.
+        You can also return `false` from the callback to stop reading the
+        file part way through.
+</code></pre>
+    </div>
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>inFilePath</code></td>
+            
+            
+            <td class="type">
+            
+                        String
+                         | 
+                    
+                        Array
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The path to the file to read.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inChunkSize</code></td>
+            
+            
+            <td class="type">
+            
+                        Number=8192
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The number of bytes to read per
+                chunk.</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inCallback</code></td>
+            
+            
+            <td class="type">
+            
+                        Function
+                        
+                    
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>A function that will be called after
+                each chunk is read from the file.  The function is called with
+                two parameters: a string containing the most recent chunk and
+                a number indicating the position of the beginning of the current
+                chunk within the file.  Return <code>false</code> from the callback to stop
+                reading the file.  Note that the last chunk in the file may be
+                less than <code>inChunkSize</code> bytes long.</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<dt class="tag-source">Source:</dt>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 130</li></ul></dd>
+	
+    
+    
+	
+	
+	
+	
+</dl>
+
+    
+    
+    
+    
+    
+    
     
     
 </dd>
@@ -1843,7 +2012,7 @@ an empty string is returned.</p>
     <div class="description">
         <p>Returns the contents of a JSON file as a JS object.  An object
 passed in via the <code>inDefaultData</code> param will have its properties
-overridden by the data from the JSON file.  If the file does not 
+overridden by the data from the JSON file.  If the file does not
 exist, inDefaultData is returned unmodified.</p>
     </div>
     
@@ -1942,7 +2111,7 @@ exist, inDefaultData is returned unmodified.</p>
                 </td>
             
             
-            <td class="description last"><p>An object holding default 
+            <td class="description last"><p>An object holding default
 properties that will be overriden by the JSON data.</p></td>
         </tr>
 	
@@ -1973,7 +2142,7 @@ properties that will be overriden by the JSON data.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 187</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 242</li></ul></dd>
 	
     
     
@@ -2027,8 +2196,8 @@ properties that will be overriden by the JSON data.</p></td>
     
     <div class="description">
         <p>Writes a string to a text file.  It will overwrite a file that
-already exists at the path.  The text is always written out in 
-UTF-8 format, rather than ISO-8859-1, so that accented characters 
+already exists at the path.  The text is always written out in
+UTF-8 format, rather than ISO-8859-1, so that accented characters
 are reproduced correctly.</p>
     </div>
     
@@ -2191,7 +2360,7 @@ a UTF-8 byte order mark at the beginning of the file.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 118</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 177</li></ul></dd>
 	
     
     
@@ -2356,9 +2525,9 @@ by default.</p>
 indent the JSON output.  The default value is "\t".  Because the
 Fireworks <code>file.readline()</code> method returns null if a line is
 longer than 2047 characters, you will generally want to use a
-spacer string to force the JSON output to include only one 
-property per line.  This makes the file slightly larger but it 
-also makes it more likely that the JSON can be read back in by 
+spacer string to force the JSON output to include only one
+property per line.  This makes the file slightly larger but it
+also makes it more likely that the JSON can be read back in by
 Fireworks successfully.</p></td>
         </tr>
 	
@@ -2389,7 +2558,7 @@ Fireworks successfully.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 236</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/files.js, line 291</li></ul></dd>
 	
     
     
@@ -2431,7 +2600,7 @@ Fireworks successfully.</p></td>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Thu Mar 28 2013 20:09:49 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Thu May 30 2013 18:42:57 GMT-0700 (PDT)
 </footer>
 
 <script> sh_highlightDocument(); </script>
