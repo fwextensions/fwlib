@@ -239,7 +239,7 @@ layer in the current state.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 526</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 546</li></ul></dd>
 	
     
     
@@ -290,7 +290,7 @@ is open or closed</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 734</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 754</li></ul></dd>
 	
     
     
@@ -366,6 +366,27 @@ is open or closed</p>
     <div class="description">
         <p>An array of the Fireworks elements and sub-layers that are on the
 layer in the current state.</p>
+
+<p>Note that the sub-layers in this array are regular Fireworks layers,
+not <code>Layer</code> instances.  If you want to loop through a layer's
+<code>elemsandsublayers</code> array and access the <code>Layer</code> instance for each
+sub-layer you find, you'll need to manually access the sub-layers you
+find, like so:</p>
+
+<pre><code>var toolbar = new LayerTree().layer("toolbar"),
+    elemsandsublayers = toolbar.elemsandsublayers,
+    sublayerIndex = 0;
+
+for (var i = 0; i &lt; elemsandsublayers.length; i++) {
+    if (elemsandsublayers[i].layerType) {
+        // this is a layer object, so look up the corresponding
+        // Layer instance in the parent layer's sublayers array
+        toolbar.sublayers[sublayerIndex++] // ...
+    } else {
+        // do something with the regular element
+    }
+}
+</code></pre>
     </div>
     
     
@@ -391,7 +412,7 @@ layer in the current state.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 512</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 532</li></ul></dd>
 	
     
     
@@ -451,7 +472,7 @@ and number of elements and sub-layers.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 635</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 655</li></ul></dd>
 	
     
     
@@ -551,7 +572,7 @@ and number of elements and sub-layers.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 760</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 780</li></ul></dd>
 	
     
     
@@ -601,7 +622,7 @@ and number of elements and sub-layers.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 773</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 793</li></ul></dd>
 	
     
     
@@ -704,7 +725,7 @@ stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 839</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 859</li></ul></dd>
 	
     
     
@@ -756,7 +777,7 @@ the stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 875</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 895</li></ul></dd>
 	
     
     
@@ -806,7 +827,7 @@ the stack.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 708</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 728</li></ul></dd>
 	
     
     
@@ -1013,7 +1034,7 @@ sub-layers are returned.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 552</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 572</li></ul></dd>
 	
     
     
@@ -1065,7 +1086,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 808</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 828</li></ul></dd>
 	
     
     
@@ -1116,7 +1137,7 @@ at the top level, then the same layer is returned.</p>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 787</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 807</li></ul></dd>
 	
     
     
@@ -1168,7 +1189,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 824</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 844</li></ul></dd>
 	
     
     
@@ -1218,7 +1239,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 683</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 703</li></ul></dd>
 	
     
     
@@ -1280,7 +1301,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 932</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 952</li></ul></dd>
 	
     
     
@@ -1341,7 +1362,7 @@ stack in the <em>Layers</em> panel, than this property will be <code>undefined</
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 920</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 940</li></ul></dd>
 	
     
     
@@ -1406,7 +1427,7 @@ document to shift their index.  Accessing the properties on a stale
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 906</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 926</li></ul></dd>
 	
     
     
@@ -1470,7 +1491,7 @@ document to shift their index.  Accessing the properties on a stale
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 946</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 966</li></ul></dd>
 	
     
     
@@ -1603,7 +1624,7 @@ layer's <code>elements</code> array.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 991</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 1011</li></ul></dd>
 	
     
     
@@ -1736,7 +1757,7 @@ layer's <code>elements</code> array.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 964</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 984</li></ul></dd>
 	
     
     
@@ -1849,7 +1870,7 @@ is different than the sub-layer's corresponding index in its parent's
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 569</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 589</li></ul></dd>
 	
     
     
@@ -1985,7 +2006,7 @@ parent's <code>elemsandsublayers</code> array.</p></td>
 	
 	
 	<dt class="tag-source">Source:</dt>
-	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 590</li></ul></dd>
+	<dd class="tag-source"><ul class="dummy"><li>lib/fwlib/layers.js, line 610</li></ul></dd>
 	
     
     
@@ -2044,13 +2065,13 @@ sub-layer, or <code>undefined</code> if it can't be found.</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-DomStorage.html">DomStorage</a></li><li><a href="module-files.html">files</a></li><li><a href="module-layers.html">layers</a></li><li><a href="module-prefs.html">prefs</a></li></ul><h3>Classes</h3><ul><li><a href="a321565296.html">DomStorage</a></li><li><a href="module-layers.Layer.html">Layer</a></li><li><a href="module-layers.LayerTree.html">LayerTree</a></li><li><a href="module-prefs.PrefsStorage.html">PrefsStorage</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-DomStorage.html">DomStorage</a></li><li><a href="module-files.html">files</a></li><li><a href="module-fonts.html">fonts</a></li><li><a href="module-layers.html">layers</a></li><li><a href="module-prefs.html">prefs</a></li><li><a href="module-underscore.html">underscore</a></li></ul><h3>Classes</h3><ul><li><a href="a321565296.html">DomStorage</a></li><li><a href="module-layers.Layer.html">Layer</a></li><li><a href="module-layers.LayerTree.html">LayerTree</a></li><li><a href="module-prefs.PrefsStorage.html">PrefsStorage</a></li><li><a href="_.html">_</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Thu May 30 2013 18:42:57 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3</a> on Mon Jul 08 2013 09:13:10 GMT-0700 (PDT)
 </footer>
 
 <script> sh_highlightDocument(); </script>

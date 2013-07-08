@@ -3,11 +3,27 @@
 The `fwlib` library offers a collection of utility functions and classes that simplify some aspects of extension development for Adobe Fireworks.  It will hopefully grow in scope as time goes on.  The code is provided as a series of [AMD modules](#requiring-fwlib-modules).
 
 
+## fwlib/DomStorage
+
+The `fwlib/DomStorage` module provides a class that makes it easy to save and restore arbitrary JS data in the `dom.pngText` object in Fireworks documents.  The data is saved with the document itself, rather than in an external file, which ensures that it's always available if the user distributes the file to someone else.  
+
+The advantage to using the `DomStorage` class over accessing the `dom.pngText` property directly is that the latter can store only strings of up to 1023 characters, while the former can safely store arbitrary JS data by converting it to JSON, splitting the string string into multiple chunks and then recombining them when the data is later retrieved. 
+
+[Documentation][7]
+
+
 ## fwlib/files
 
 The `fwlib/files` module provides a number of utility functions that simplify working with files in Fireworks extensions.  For instance, `files.read()` reads an entire text file into a string, and `files.writeJSON()` writes a JavaScript object out to a file as a JSON string.  
 
 [Documentation][4]
+
+
+## fwlib/fonts
+
+The `fwlib/fonts` module provides a method for getting more detailed information about a font than is provided by the native Fireworks API.  It gets the additional information by parsing the `.lst` font data files that are created by Adobe CS6 suite apps.
+
+[Documentation][12]
 
 
 ## fwlib/layers
@@ -26,26 +42,17 @@ The `fwlib/prefs` module includes utility functions for working with Fireworks p
 [Documentation][6]
 
 
-## fwlib/DomStorage
-
-The `fwlib/DomStorage` module provides a class that makes it easy to save and restore arbitrary JS data in the `dom.pngText` object in Fireworks documents.  The data is saved with the document itself, rather than in an external file, which ensures that it's always available if the user distributes the file to someone else.  
-
-The advantage to using the `DomStorage` class over accessing the `dom.pngText` property directly is that the latter can store only strings of up to 1023 characters, while the former can safely store arbitrary JS data by splitting a JSON string into multiple chunks and then recombining them when the data is later retrieved. 
-
-[Documentation][7]
-
-
 ## fwlib/underscore
 
-The [`underscore.js`][9] library provides a large number of handy utilities, including implementations for functions like `forEach()`, `map()` and `reduce()`, which are supported in modern browsers but not in the Fireworks JS engine.  It also includes a simple but powerful templating engine.  
+The [`Lo-Dash`][9] library provides a large number of handy utilities, including implementations for functions like `forEach()`, `map()` and `reduce()`, which are supported in modern browsers but not in the Fireworks JS engine.  It also includes a simple but powerful templating engine.  It's a drop-in replacement for the `underscore.js` module that was previously used by `fwlib`.
 
-The code is a slightly modified version of the 1.4.3 release of `underscore.js`.  It uses `define()` to create the module instead of exporting a global, and the functions that rely on `setTimeout()` have been overridden to throw errors, since that function is not available within Fireworks.  
+The `underscore` module requires `lodash.min.js` to be in the same directory.  It calls `_.noConflict()` so that a global `_` reference is not exported and the functions that rely on `setTimeout()` have been overridden to throw errors, since that function is not available within Fireworks.  
 
-The library has also been patched so that `_.has()` uses the `in` operator instead of `hasOwnProperty()` when checking for properties on native objects, which don't correctly support `hasOwnProperty()`.
+The Lo-Dash library has been patched so that `_.has()` uses the `in` operator instead of `hasOwnProperty()` when checking for properties on native objects, which don't correctly support `hasOwnProperty()`.
 
-In addition to the standard Underscore methods like `_.isFunction()`, there are equivalent methods for all native Fireworks types, like `_.isImage()`, which can be useful when filtering the selection.  Note that `_.isGroup()` will return false if the group is actually a smart shape, and `_.isSmartShape()` will return true in that case.  
+In addition to the standard Lo-Dash methods like `_.isFunction()`, there are equivalent methods for all native Fireworks types, like `_.isImage()`, which can be useful when filtering the selection.  Note that `_.isGroup()` will return false if the group is actually a smart shape, and `_.isSmartShape()` will return true in that case.  
 
-A `_.createObject()` method has also been added to the Underscore module.  This is a polyfill for the ES5 `Object.create()` method, based on the [`es5-shim`][11] library.  It takes a prototype object as its first parameter, which is set as the prototype of the new object it returns.  It takes an object as an optional second parameter.  Any properties on that parameter will be copied to the new object before it's returned.  
+The un-minified `lodash.js` file is also included to help with debugging, but is not required by the `underscore` module.
 
 [Documentation][10]
 
@@ -120,5 +127,6 @@ Just remember that module paths are relative to the directory from which you loa
 [7]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-DomStorage.html
 [8]: http://dojotoolkit.org/reference-guide/1.8/dojo/json.html
 [9]: http://documentcloud.github.com/underscore/
-[10]: http://underscorejs.org/
+[10]: http://lodash.com/ 
 [11]: https://github.com/kriskowal/es5-shim
+[12]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-fonts.html
