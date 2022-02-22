@@ -121,12 +121,12 @@ Just remember that module paths are relative to the directory from which you loa
 [1]: https://github.com/fwextensions/fwrequirejs
 [2]: http://www.requirejs.org/
 [3]: https://github.com/fwextensions/fwrequirejs#configuring-fwrequirejs
-[4]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-files.html
-[5]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-layers.html
-[6]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-prefs.html
-[7]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-DomStorage.html
+[4]: https://fwextensions.github.io/fwlib/module-files.html
+[5]: https://fwextensions.github.io/fwlib/module-layers.html
+[6]: https://fwextensions.github.io/fwlib/module-prefs.html
+[7]: https://fwextensions.github.io/fwlib/module-DomStorage.html
 [8]: http://dojotoolkit.org/reference-guide/1.8/dojo/json.html
 [9]: http://documentcloud.github.com/underscore/
 [10]: http://lodash.com/ 
 [11]: https://github.com/kriskowal/es5-shim
-[12]: http://htmlpreview.github.com/?https://github.com/fwextensions/fwlib/blob/master/docs/module-fonts.html
+[12]: https://fwextensions.github.io/fwlib/module-fonts.html
